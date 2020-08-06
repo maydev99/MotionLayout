@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="3000">
+
+        <OnSwipe
+            app:touchAnchorId="@+id/red_heart"
+            app:touchAnchorSide="right"
+            app:dragDirection="dragRight" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="25"
+                app:motionTarget="@id/red_heart"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6" />
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@+id/red_heart"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.5" />
+            <KeyPosition
+                app:framePosition="75"
+                app:motionTarget="@+id/red_heart"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6" />
+
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@+id/red_heart"
+                android:scaleY="2.0"
+                android:scaleX="2.0"
+                android:rotation="-360"/>
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@+id/red_heart"
+                android:rotation="-720"/>
+
+            <KeyAttribute
+                app:framePosition="85"
+                app:motionTarget="@+id/creditTextView"
+                android:alpha="0.0"
+                android:elevation="10dp"/>
+
+            //Custom Attributes
+            <KeyAttribute
+                app:framePosition="0"
+                app:motionTarget="@+id/red_heart">
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#FF0000"/>
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@+id/red_heart">
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#4B0082"/>
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@+id/red_heart">
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#FF0000"/>
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@+id/background"
+                android:transformPivotY="500dp"/>
+
+
+        </KeyFrameSet>
+
+
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/red_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Constraint android:id="@+id/creditTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="0.0"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@+id/red_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start" />
+</MotionScene>
+
+
